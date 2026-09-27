@@ -106,3 +106,49 @@ function escapeHtml(value) {
 }
 
 $("#sessionButton").addEventListener("click", startSession);
+
+
+/**
+ * Puter AI adapter.
+ * Great Church AI does not store provider API keys in the browser.
+ * Puter.js exposes AI services through the user's Puter session/user-pays model.
+ */
+const puterAI = {
+  available: () => typeof window.puter !== "undefined" && typeof window.puter.ai?.chat === "function",
+
+  async analyzeContext(transcript, context = {}) {
+    if (!this.available() || !transcript?.trim()) return null;
+
+    const prompt = [
+      "You are the church-intelligence layer for Great Church AI.",
+      "Analyze the following church-service transcript.",
+      "Return ONLY valid JSON with keys: title, description, category, confidence.",
+      "Do not recommend actions that bypass the human operator.",
+      "Identify useful media opportunities such as Scripture, sermon topic, worship moment, announcement, prayer, or teaching.",
+      "",
+      "Transcript:",
+      transcript,
+      "",
+      "Recent context:",
+      JSON.stringify(context)
+    ].join("\n");
+
+    try {
+      const response = await window.puter.ai.chat(prompt, {
+        model: "gpt-5-nano"
+      });
+
+      const raw = typeof response === "string"
+        ? response
+        : response?.message?.content || response?.text || "";
+
+      const cleaned = String(raw).replace(/^\`\`\`json\s*/i, "").replace(/\s*\`\`\`$/, "");
+      return JSON.parse(cleaned);
+    } catch (error) {
+      console.warn("Puter AI analysis unavailable:", error);
+      return null;
+    }
+  }
+};
+
+window.greatChurchAI = { ...(window.greatChurchAI || {}), puterAI };
