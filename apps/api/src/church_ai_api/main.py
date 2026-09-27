@@ -1,15 +1,25 @@
-from fastapi import FastAPI
-from church_ai_api.api.ws import router as websocket_router
+from flask import Flask, jsonify
 
-app = FastAPI(
-    title="Great Church AI",
-    version="0.1.0",
-    description="Realtime AI media assistant API",
-)
+from church_ai_api.api.ws import socket
+from church_ai_api.config import get_settings
 
-app.include_router(websocket_router)
+settings = get_settings()
 
 
-@app.get("/health")
-async def health() -> dict[str, str]:
-    return {"status": "ok"}
+def create_app() -> Flask:
+    app = Flask(__name__)
+    app.config["JSON_SORT_KEYS"] = False
+    socket.init_app(app)
+
+    @app.get("/health")
+    def health():
+        return jsonify(status="ok")
+
+    return app
+
+
+app = create_app()
+
+
+if __name__ == "__main__":
+    app.run(host=settings.api_host, port=settings.api_port)
