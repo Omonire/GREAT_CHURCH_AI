@@ -1,4 +1,13 @@
-[build-system]
+[build-system    "pytest>=8.3,<9",
+    "httpx>=0.28,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3,<9",
+    "httpx>=0.28,<1",
+]
+
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
