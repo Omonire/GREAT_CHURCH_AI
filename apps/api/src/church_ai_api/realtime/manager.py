@@ -4,6 +4,8 @@ from uuid import UUID
 
 from fastapi import WebSocket
 
+from church_ai_api.schemas.events import EventEnvelope
+
 
 class ConnectionManager:
     def __init__(self) -> None:
