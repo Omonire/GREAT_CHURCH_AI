@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body { overflow-x: hidden; }
+button { font-family: inherit; }
+
+.hero-glow {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(59,130,246,.14), transparent 32%),
+    radial-gradient(circle at 85% 10%, rgba(16,185,129,.09), transparent 28%);
+}
+
+.status-pill {
+  display:flex; align-items:center; gap:.5rem; border:1px solid rgba(255,255,255,.1);
+  border-radius:999px; padding:.45rem .75rem; font-size:.65rem; font-weight:800; letter-spacing:.08em;
+  background:rgba(255,255,255,.03);
+}
+.status-dot { width:7px; height:7px; border-radius:50%; background:#64748b; }
+.status-pill.online { color:#86efac; border-color:rgba(74,222,128,.2); background:rgba(74,222,128,.05); }
+.status-pill.online .status-dot { background:#4ade80; box-shadow:0 0 12px rgba(74,222,128,.8); }
+.status-pill.connecting { color:#fcd34d; }
+.status-pill.connecting .status-dot { background:#fbbf24; animation:pulse 1s infinite; }
+
+.live-badge {
+  display:inline-flex; align-items:center; gap:.45rem; border-radius:999px; padding:.35rem .6rem;
+  background:rgba(239,68,68,.08); border:1px solid rgba(239,68,68,.2); color:#fca5a5;
+  font-size:.65rem; font-weight:800; letter-spacing:.1em;
+}
+.live-badge span { width:6px; height:6px; border-radius:50%; background:#ef4444; animation:pulse 1.2s infinite; }
+
+.panel { box-shadow: 0 24px 80px rgba(0,0,0,.18); }
+.control-card {
+  display:flex; align-items:center; gap:.75rem; padding:.8rem; border-radius:1rem;
+  border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.025);
+}
+.icon-box { display:grid; place-items:center; width:34px; height:34px; border-radius:.7rem; background:rgba(255,255,255,.06); color:#94a3b8; }
+
+.empty-state { min-height:120px; display:grid; place-items:center; align-content:center; gap:.65rem; color:#64748b; text-align:center; font-size:.75rem; }
+.empty-state i { font-size:1.35rem; color:#475569; }
+.transcript-item { border-left:2px solid rgba(255,255,255,.1); padding-left:1rem; }
+.transcript-item.final { border-color:rgba(96,165,250,.7); }
+.event-row { padding:.65rem .75rem; border-bottom:1px solid rgba(255,255,255,.05); }
+.event-row:last-child { border-bottom:0; }
+
+@keyframes pulse { 50% { opacity:.35; transform:scale(.85); } }
+@keyframes slideIn { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
+.animate-in { animation:slideIn .28s ease-out both; }
