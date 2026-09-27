@@ -1,24 +1,23 @@
-import asyncio
 from collections import defaultdict
+from threading import Lock
 from uuid import UUID
 
-from fastapi import WebSocket
+from flask_sock import Server
 
 from church_ai_api.schemas.events import EventEnvelope
 
 
 class ConnectionManager:
     def __init__(self) -> None:
-        self._connections: dict[UUID, set[WebSocket]] = defaultdict(set)
-        self._lock = asyncio.Lock()
+        self._connections: dict[UUID, set[Server]] = defaultdict(set)
+        self._lock = Lock()
 
-    async def connect(self, session_id: UUID, websocket: WebSocket) -> None:
-        await websocket.accept()
-        async with self._lock:
+    def connect(self, session_id: UUID, websocket: Server) -> None:
+        with self._lock:
             self._connections[session_id].add(websocket)
 
-    async def disconnect(self, session_id: UUID, websocket: WebSocket) -> None:
-        async with self._lock:
+    def disconnect(self, session_id: UUID, websocket: Server) -> None:
+        with self._lock:
             connections = self._connections.get(session_id)
             if not connections:
                 return
@@ -26,15 +25,20 @@ class ConnectionManager:
             if not connections:
                 self._connections.pop(session_id, None)
 
-    async def broadcast(self, session_id: UUID, event: EventEnvelope) -> None:
-        connections = list(self._connections.get(session_id, set()))
-        dead: list[WebSocket] = []
+    def broadcast_sync(
+        self, session_id: UUID, event: EventEnvelope, sender: Server
+    ) -> None:
+        with self._lock:
+            connections = list(self._connections.get(session_id, set()))
+
+        payload = event.model_dump_json()
+        dead: list[Server] = []
 
         for websocket in connections:
             try:
-                await websocket.send_json(event.model_dump(mode="json"))
+                websocket.send(payload)
             except Exception:
                 dead.append(websocket)
 
         for websocket in dead:
-            await self.disconnect(session_id, websocket)
+            self.disconnect(session_id, websocket)
