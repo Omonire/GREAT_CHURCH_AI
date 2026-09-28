@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections import defaultdict
 from threading import Lock
 from uuid import UUID
@@ -6,6 +8,8 @@ from church_ai_api.schemas.events import EventEnvelope
 
 
 class ConnectionManager:
+    """Thread-safe registry of live websocket connections per session."""
+
     def __init__(self) -> None:
         self._connections: dict[UUID, set[object]] = defaultdict(set)
         self._lock = Lock()
@@ -14,7 +18,7 @@ class ConnectionManager:
         with self._lock:
             self._connections[session_id].add(websocket)
 
-    def disconnect(self, session_id: UUID, websocket: Server) -> None:
+    def disconnect(self, session_id: UUID, websocket: object) -> None:
         with self._lock:
             connections = self._connections.get(session_id)
             if not connections:
@@ -22,6 +26,10 @@ class ConnectionManager:
             connections.discard(websocket)
             if not connections:
                 self._connections.pop(session_id, None)
+
+    def count(self, session_id: UUID) -> int:
+        with self._lock:
+            return len(self._connections.get(session_id, ()))
 
     def broadcast_sync(
         self, session_id: UUID, event: EventEnvelope, sender: object
