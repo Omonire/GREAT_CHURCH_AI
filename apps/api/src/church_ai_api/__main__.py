@@ -11,8 +11,6 @@ from church_ai_api.config import get_settings
 from church_ai_api.main import create_app
 
 settings = get_settings()
-
-# WSGI target for gunicorn/uwsgi: church_ai_api.main:app
 app = create_app(settings)
 
 
