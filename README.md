@@ -73,6 +73,31 @@ Set `SECRET_KEY` to a real random value and `APP_ENV=production` before any
 public deployment. `CORS_ORIGINS` is only needed if you serve the frontend from
 a different origin than the API.
 
+## Deploying
+
+The app is a stateless WSGI service, so it needs only a Python runtime and a
+static path. The `python -m church_ai_api` entry point is for local
+development; production should use gunicorn against the app factory:
+
+```
+gunicorn church_ai_api.main:create_app() --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
+```
+
+Use one worker with threads. The KJV corpus is loaded once per worker, so
+extra workers each pay that cost for no benefit on a small instance.
+
+Settings that matter in production:
+
+| Variable | Value | Why |
+| --- | --- | --- |
+| `APP_ENV` | `production` | Disables the dev server and debug |
+| `SECRET_KEY` | random 48 bytes | Required; the default is a development value |
+| `WEB_DIST` | `./apps/web` | Removes any ambiguity about the static path |
+| `PORT` | set by the host | Gunicorn must bind to it |
+
+Set the health check to `/api/health`. On a free instance expect the service to
+sleep when idle, so the first request after a quiet period pays the corpus load.
+
 ## API
 
 All responses are JSON. Errors carry `{"error": {"code", "message", "fields"}}`.
