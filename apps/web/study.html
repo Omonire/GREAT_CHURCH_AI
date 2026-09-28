@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study a passage — Great Church AI</title>
+<meta name="description" content="Read a passage and work through it: explanations, key themes, related Scripture, and reflection questions.">
+<meta name="theme-color" content="#16233a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2316233a'/><path d='M12 5 6 8.5V10h12V8.5L12 5Z' fill='%23e9dcc0'/><path d='M8 11v7M16 11v7M11 18v-4.5a1 1 0 0 1 2 0V18' stroke='%23e9dcc0' stroke-width='1.3' fill='none' stroke-linecap='round'/></svg>">
+
+<script src="https://js.puter.com/v2/" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="page">
+
+<header class="header" data-header>
+  <div class="shell shell--wide header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v2h18V7l-9-5Z"/><path d="M5 9v11M19 9v11M9.5 20v-6a2.5 2.5 0 0 1 5 0v6"/></svg></span>
+      <span class="brand__text">
+        <span class="brand__name">Great Church AI</span>
+        <span class="brand__tag">Faith · Scripture · Guidance</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <span class="nav-toggle__bars"></span>
+    </button>
+
+    <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+      <a class="nav__link" href="/">Home</a>
+      <a class="nav__link" href="/bible.html">Bible</a>
+      <a class="nav__link" href="/study.html">Study</a>
+      <a class="nav__link" href="/prayer.html">Prayer</a>
+      <a class="nav__link" href="/sermons.html">Sermons</a>
+      <a class="nav__link" href="/about.html">About</a>
+      <a class="btn btn--primary btn--sm" href="/chat.html">Ask AI</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--primary btn--sm" href="/chat.html">Ask Great Church AI</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="shell page-hero__inner">
+      <span class="eyebrow" style="justify-content:center">Bible study</span>
+      <h1 class="h-display" style="font-size:clamp(2.2rem,5vw,3.4rem)">Study a passage</h1>
+      <p class="lede" style="margin-inline:auto">
+        Read it first, then ask. Explanations here are offered as one reading to
+        consider — never as settled doctrine.
+      </p>
+    </div>
+  </section>
+
+  <!-- Step 1 + 2: choose -->
+  <section class="section section--tight">
+    <div class="shell shell--wide">
+      <div class="panel" style="margin-bottom:22px">
+        <div class="panel__head">
+          <span class="panel__title">1 · Choose your passage</span>
+          <a class="btn btn--quiet btn--sm" href="/bible.html">Open full reader</a>
+        </div>
+        <div class="panel__body">
+          <div class="notice notice--error" data-error hidden style="margin-bottom:18px"></div>
+
+          <div class="field__row">
+            <div>
+              <label class="field__label" for="study-testament">Testament</label>
+              <select class="select" id="study-testament" data-testament>
+                <option value="">All books</option>
+                <option value="Old Testament">Old Testament</option>
+                <option value="New Testament">New Testament</option>
+              </select>
+            </div>
+            <div>
+              <label class="field__label" for="study-book">Book</label>
+              <select class="select" id="study-book" data-book disabled>
+                <option>Loading…</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field__row">
+            <div>
+              <label class="field__label" for="study-chapter">Chapter</label>
+              <select class="select" id="study-chapter" data-chapter disabled></select>
+            </div>
+            <div>
+              <label class="field__label" for="study-verses">Verses <span class="muted">(optional)</span></label>
+              <input class="input" id="study-verses" data-verses placeholder="e.g. 1-7 or 16" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="field" style="margin-bottom:0">
+            <label class="field__label" for="study-reference">Or type a full reference</label>
+            <div class="row" style="flex-wrap:nowrap;gap:8px">
+              <input class="input" id="study-reference" data-reference placeholder="Romans 8:28-30" autocomplete="off" style="flex:1;min-width:0">
+              <button class="btn btn--primary" type="button" data-go>Load passage</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 3: read -->
+  <section class="section section--tight" style="padding-top:0">
+    <div class="shell shell--wide">
+      <div class="panel">
+        <div class="panel__head">
+          <span class="panel__title">2 · Read it</span>
+          <div class="row" style="gap:8px">
+            <span class="badge" data-translation hidden></span>
+            <button class="icon-btn" type="button" data-copy hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+        <div class="panel__body">
+          <div class="verse-meta" data-meta hidden>
+            <span class="verse-meta__ref" data-ref></span>
+            <span class="badge badge--sage" data-count></span>
+          </div>
+          <div class="scripture" data-passage>
+            <p class="muted">Choose a book and chapter above, then press <strong>Load passage</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 4: ask -->
+  <section class="section section--tight" style="padding-top:0">
+    <div class="shell shell--wide">
+      <div class="panel">
+        <div class="panel__head">
+          <span class="panel__title">3 · Work through it</span>
+          <span class="badge badge--gold" data-engine>AI in your browser</span>
+        </div>
+        <div class="panel__body">
+          <div class="notice notice--quiet" style="margin-bottom:20px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5.5c0 4.2 2.9 8.1 7 9.5 4.1-1.4 7-5.3 7-9.5V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>
+              These are AI-generated readings of the passage above — one interpretation
+              to think with, not an undisputed conclusion. Scripture itself is the
+              authority, and your church's teaching may read it differently.
+            </span>
+          </div>
+
+          <div class="row" style="margin-bottom:20px">
+            <button class="btn btn--gold" type="button" data-action="explain">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 13.9 9l5.6 1.9-5.6 2L12 18.5 10.1 13l-5.6-2L10.1 9 12 3.5Z"/></svg>
+              Explain
+            </button>
+            <button class="btn btn--ghost" type="button" data-action="summarize">Summarise</button>
+            <button class="btn btn--ghost" type="button" data-action="themes">Key themes</button>
+            <button class="btn btn--ghost" type="button" data-action="reflect">Reflection questions</button>
+            <button class="btn btn--ghost" type="button" data-action="related">Related Scripture</button>
+          </div>
+
+          <div class="notice notice--error" data-ai-error hidden style="margin-bottom:18px"></div>
+
+          <div data-output>
+            <p class="muted small">Load a passage, then choose an action above.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="shell shell--narrow center">
+      <h2 class="h-2" style="margin-bottom:12px">Keep going with this passage</h2>
+      <p class="lede" style="margin-inline:auto">
+        Turn what you have read into a prayer, or ask a follow-up question in a full
+        conversation.
+      </p>
+      <div class="row" style="justify-content:center;margin-top:24px">
+        <a class="btn btn--primary" data-next="prayer" href="/prayer.html">Create a prayer</a>
+        <a class="btn btn--ghost" data-next="chat" href="/chat.html">Ask a follow-up</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="/">
+          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v2h18V7l-9-5Z"/><path d="M5 9v11M19 9v11M9.5 20v-6a2.5 2.5 0 0 1 5 0v6"/></svg></span>
+          <span class="brand__text">
+            <span class="brand__name">Great Church AI</span>
+            <span class="brand__tag">Faith · Scripture · Guidance</span>
+          </span>
+        </a>
+        <p class="footer__blurb">A calm, free companion for exploring Scripture, studying the Bible, and finding words to pray.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/chat.html">Ask AI</a></li>
+          <li><a href="/bible.html">Bible</a></li>
+          <li><a href="/study.html">Study</a></li>
+          <li><a href="/prayer.html">Prayer</a></li>
+          <li><a href="/sermons.html">Sermons</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/about.html#scripture">Which Bible?</a></li>
+          <li><a href="/about.html#limitations">Limitations</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Project</h4>
+        <ul>
+          <li><a href="https://github.com/Omonire/GREAT_CHURCH_AI" rel="noopener noreferrer">Source code</a></li>
+          <li><a href="/about.html#privacy">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__disclaimer">
+        Great Church AI is an AI tool for exploring Christian content. It is not God, a
+        pastor, or a prophet. Scripture text is the King James Version, in the public domain.
+      </p>
+      <p>Open source · MIT</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script src="/js/core.js"></script>
+<script src="/js/study.js"></script>
+</body>
+</html>

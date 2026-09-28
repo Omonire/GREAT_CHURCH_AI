@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "great-church-ai-api"
+version = "0.1.0"
+description = "Flask realtime API foundation for Great Church AI"
+requires-python = ">=3.12"
+dependencies = [
+  "Flask>=3.1,<4",
+  "flask-sock>=0.7,<1",
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.7,<3",
+  "pythonbible>=0.15,<0.16",
+  "pythonbible_kjv>=0.0.2,<0.1",
+  "gunicorn>=23,<24",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9",
+  "pytest-cov>=6,<7",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/church_ai_api"]
