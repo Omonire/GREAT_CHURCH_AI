@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sermon notes — Great Church AI</title>
+<meta name="description" content="Sermon scaffolding for church leaders: an outline you can build from, with every line checked back to Scripture.">
+<meta name="theme-color" content="#16233a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2316233a'/><path d='M12 5 6 8.5V10h12V8.5L12 5Z' fill='%23e9dcc0'/><path d='M8 11v7M16 11v7M11 18v-4.5a1 1 0 0 1 2 0V18' stroke='%23e9dcc0' stroke-width='1.3' fill='none' stroke-linecap='round'/></svg>">
+
+<script src="https://js.puter.com/v2/" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="page">
+
+<header class="header" data-header>
+  <div class="shell shell--wide header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v2h18V7l-9-5Z"/><path d="M5 9v11M19 9v11M9.5 20v-6a2.5 2.5 0 0 1 5 0v6"/></svg></span>
+      <span class="brand__text">
+        <span class="brand__name">Great Church AI</span>
+        <span class="brand__tag">Faith · Scripture · Guidance</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <span class="nav-toggle__bars"></span>
+    </button>
+
+    <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+      <a class="nav__link" href="/">Home</a>
+      <a class="nav__link" href="/bible.html">Bible</a>
+      <a class="nav__link" href="/study.html">Study</a>
+      <a class="nav__link" href="/prayer.html">Prayer</a>
+      <a class="nav__link" href="/sermons.html">Sermons</a>
+      <a class="nav__link" href="/about.html">About</a>
+      <a class="btn btn--primary btn--sm" href="/chat.html">Ask AI</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--primary btn--sm" href="/chat.html">Ask Great Church AI</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="shell page-hero__inner">
+      <span class="eyebrow" style="justify-content:center">For church leaders</span>
+      <h1 class="h-display" style="font-size:clamp(2.2rem,5vw,3.4rem)">Sermon notes</h1>
+      <p class="lede" style="margin-inline:auto">
+        A starting point, not a finished sermon. Every point here is tied back to a
+        passage so you can check it.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="shell shell--wide">
+      <div class="split split--wide">
+
+        <div class="panel">
+          <div class="panel__head">
+            <span class="panel__title">Your text</span>
+            <span class="badge" data-translation hidden>KJV</span>
+          </div>
+          <div class="panel__body">
+            <div class="notice notice--error" data-error hidden style="margin-bottom:18px"></div>
+
+            <div class="field">
+              <label class="field__label" for="sermon-reference">Passage or reference</label>
+              <input class="input" id="sermon-reference" data-reference placeholder="e.g. Psalm 23 or Mark 4:35-41" autocomplete="off">
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="sermon-title">Title <span class="muted">(optional)</span></label>
+              <input class="input" id="sermon-title" data-title placeholder="e.g. The Shepherd Who Provides" autocomplete="off">
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="sermon-notes">Your own notes <span class="muted">(optional)</span></label>
+              <textarea class="input textarea" id="sermon-notes" data-body rows="6"
+                placeholder="Points you already have, what the congregation struggles with, where you want to land…"></textarea>
+              <p class="field__hint">These stay in your browser. Nothing is uploaded.</p>
+            </div>
+
+            <div class="row">
+              <button class="btn btn--primary" type="button" data-outline>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h9"/></svg>
+                Build the outline
+              </button>
+              <a class="btn btn--quiet btn--sm" href="/bible.html">Read the text</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <span class="panel__title">Outline</span>
+            <div class="row" style="gap:8px">
+              <span class="badge badge--gold" data-source hidden></span>
+              <button class="icon-btn" type="button" data-copy hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+                <span>Copy</span>
+              </button>
+              <button class="icon-btn" type="button" data-download hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M8 11l4 4 4-4M5 20h14"/></svg>
+                <span>Save as text</span>
+              </button>
+            </div>
+          </div>
+          <div class="panel__body">
+            <div data-output>
+              <p class="muted">Enter a passage and press <strong>Build the outline</strong>.</p>
+            </div>
+
+            <div class="notice notice--error" data-ai-error hidden style="margin-top:20px"></div>
+
+            <div class="notice notice--quiet" style="margin-top:24px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 16h.01M10.3 4.3 2.6 17.6A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-2.9L13.7 4.3a2 2 0 0 0-3.4 0Z"/></svg>
+              <span>
+                An outline is a tool, not a text. Preaching the Word and pastoring a
+                congregation are what this cannot do — for either you or your congregation.
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="shell shell--narrow center">
+      <h2 class="h-2" style="margin-bottom:12px">Study it first</h2>
+      <p class="lede" style="margin-inline:auto">
+        The best outline is one you have already lived in. Read the passage, ask hard
+        questions, then come back to this page.
+      </p>
+      <div class="row" style="justify-content:center;margin-top:24px">
+        <a class="btn btn--primary" href="/study.html">Study the passage</a>
+        <a class="btn btn--ghost" href="/chat.html">Ask about it</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="/">
+          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v2h18V7l-9-5Z"/><path d="M5 9v11M19 9v11M9.5 20v-6a2.5 2.5 0 0 1 5 0v6"/></svg></span>
+          <span class="brand__text">
+            <span class="brand__name">Great Church AI</span>
+            <span class="brand__tag">Faith · Scripture · Guidance</span>
+          </span>
+        </a>
+        <p class="footer__blurb">A calm, free companion for exploring Scripture, studying the Bible, and finding words to pray.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/chat.html">Ask AI</a></li>
+          <li><a href="/bible.html">Bible</a></li>
+          <li><a href="/study.html">Study</a></li>
+          <li><a href="/prayer.html">Prayer</a></li>
+          <li><a href="/sermons.html">Sermons</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/about.html#scripture">Which Bible?</a></li>
+          <li><a href="/about.html#limitations">Limitations</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Project</h4>
+        <ul>
+          <li><a href="https://github.com/Omonire/GREAT_CHURCH_AI" rel="noopener noreferrer">Source code</a></li>
+          <li><a href="/about.html#privacy">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__disclaimer">
+        Great Church AI is an AI tool for exploring Christian content. It is not God, a
+        pastor, or a prophet. Scripture text is the King James Version, in the public domain.
+      </p>
+      <p>Open source · MIT</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script src="/js/core.js"></script>
+<script src="/js/sermons.js"></script>
+</body>
+</html>

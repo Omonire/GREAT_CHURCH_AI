@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prayer — Great Church AI</title>
+<meta name="description" content="A guided prayer you can pray, plus the freedom to write your own in your own words.">
+<meta name="theme-color" content="#16233a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2316233a'/><path d='M12 5 6 8.5V10h12V8.5L12 5Z' fill='%23e9dcc0'/><path d='M8 11v7M16 11v7M11 18v-4.5a1 1 0 0 1 2 0V18' stroke='%23e9dcc0' stroke-width='1.3' fill='none' stroke-linecap='round'/></svg>">
+
+<script src="https://js.puter.com/v2/" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="page">
+
+<header class="header" data-header>
+  <div class="shell shell--wide header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v2h18V7l-9-5Z"/><path d="M5 9v11M19 9v11M9.5 20v-6a2.5 2.5 0 0 1 5 0v6"/></svg></span>
+      <span class="brand__text">
+        <span class="brand__name">Great Church AI</span>
+        <span class="brand__tag">Faith · Scripture · Guidance</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <span class="nav-toggle__bars"></span>
+    </button>
+
+    <nav class="nav" id="primary-nav" data-nav aria-label="Primary">
+      <a class="nav__link" href="/">Home</a>
+      <a class="nav__link" href="/bible.html">Bible</a>
+      <a class="nav__link" href="/study.html">Study</a>
+      <a class="nav__link" href="/prayer.html">Prayer</a>
+      <a class="nav__link" href="/sermons.html">Sermons</a>
+      <a class="nav__link" href="/about.html">About</a>
+      <a class="btn btn--primary btn--sm" href="/chat.html">Ask AI</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--primary btn--sm" href="/chat.html">Ask Great Church AI</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="shell page-hero__inner">
+      <span class="eyebrow" style="justify-content:center">Prayer</span>
+      <h1 class="h-display" style="font-size:clamp(2.2rem,5vw,3.4rem)">A prayer to pray</h1>
+      <p class="lede" style="margin-inline:auto">
+        Use these as they help, or write your own in your own words. There is no
+        right way to pray.
+      </p>
+    </div>
+  </section>
+
+  <!-- Offline prayer: no AI required -->
+  <section class="section section--tight">
+    <div class="shell shell--wide">
+      <div class="split split--wide">
+
+        <div class="panel">
+          <div class="panel__head">
+            <span class="panel__title">Choose a theme</span>
+            <span class="badge badge--gold">Works offline</span>
+          </div>
+          <div class="panel__body">
+            <div class="field">
+              <label class="field__label" for="prayer-topic">Theme</label>
+              <select class="select" id="prayer-topic" data-topic>
+                <option>Loading…</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="prayer-detail">Add your situation <span class="muted">(optional)</span></label>
+              <textarea class="input textarea" id="prayer-detail" data-detail rows="3"
+                placeholder="e.g. My mum is in hospital next week."></textarea>
+            </div>
+
+            <div class="field" data-scripture-field>
+              <label class="field__label" for="prayer-reference">Anchor it in a passage <span class="muted">(optional)</span></label>
+              <input class="input" id="prayer-reference" data-reference placeholder="e.g. Psalm 34:18" autocomplete="off">
+            </div>
+
+            <div class="row">
+              <button class="btn btn--primary" type="button" data-generate>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 13.9 9l5.6 1.9-5.6 2L12 18.5 10.1 13l-5.6-2L10.1 9 12 3.5Z"/></svg>
+                Create the prayer
+              </button>
+              <a class="btn btn--quiet btn--sm" href="/bible.html">Find a passage</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <span class="panel__title">Your prayer</span>
+            <div class="row" style="gap:8px">
+              <button class="icon-btn" type="button" data-copy hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+                <span>Copy</span>
+              </button>
+              <button class="icon-btn" type="button" data-save hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h9l5 5v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/><path d="M9 4v5h6V4M8 20v-6h8v6"/></svg>
+                <span>Save</span>
+              </button>
+            </div>
+          </div>
+          <div class="panel__body">
+            <div class="notice notice--error" data-error hidden style="margin-bottom:18px"></div>
+            <div data-output>
+              <p class="muted">Choose a theme and press <strong>Create the prayer</strong>.</p>
+            </div>
+
+            <div class="notice notice--quiet" style="margin-top:24px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5.5c0 4.2 2.9 8.1 7 9.5 4.1-1.4 7-5.3 7-9.5V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+              <span>
+                Prayers here are assembled from fixed written templates on this page.
+                They are not spoken by God, they do not replace the work of the Holy
+                Spirit, and no prayer changes God's will. Pray from your heart.
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AI prayer: needs Puter -->
+  <section class="section section--tight" style="background:var(--gold-wash)">
+    <div class="shell shell--wide">
+      <div class="split split--wide">
+
+        <div class="panel">
+          <div class="panel__head">
+            <span class="panel__title">Write it with AI</span>
+            <span class="badge badge--gold" data-engine>AI in your browser</span>
+          </div>
+          <div class="panel__body">
+            <div class="notice notice--info" style="margin-bottom:20px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+              <span>
+                These prompts are AI-generated. Nothing is stored on a server. The words
+                are a starting point — make them yours before you pray.
+              </span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="ai-prompt">What do you want to pray about?</label>
+              <textarea class="input textarea" id="ai-prompt" data-ai-prompt rows="4"
+                placeholder="e.g. I'm anxious about a job interview on Thursday."></textarea>
+            </div>
+
+            <div class="row">
+              <button class="btn btn--gold" type="button" data-ai-generate>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 13.9 9l5.6 1.9-5.6 2L12 18.5 10.1 13l-5.6-2L10.1 9 12 3.5Z"/></svg>
+                Write the prayer
+              </button>
+              <span class="tiny muted" data-ai-status>Nothing is sent anywhere until you press this.</span>
+            </div>
+
+            <div class="notice notice--error" data-ai-error hidden style="margin-top:20px"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head">
+            <span class="panel__title">Your words</span>
+            <div class="row" style="gap:8px">
+              <button class="icon-btn" type="button" data-ai-copy hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+                <span>Copy</span>
+              </button>
+              <button class="icon-btn" type="button" data-ai-save hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h9l5 5v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/><path d="M9 4v5h6V4M8 20v-6h8v6"/></svg>
+                <span>Save</span>
+              </button>
+            </div>
+          </div>
+          <div class="panel__body">
+            <div data-ai-output>
+              <p class="muted">Write what you want to pray about, then press <strong>Write the prayer</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="shell shell--narrow center">
+      <h2 class="h-2" style="margin-bottom:12px">When you are stuck</h2>
+      <p class="lede" style="margin-inline:auto">
+        It is normal not to know what to say. You can always come to God with
+        nothing but "help me" — that is a prayer.
+      </p>
+      <div class="row" style="justify-content:center;margin-top:24px">
+        <a class="btn btn--primary" href="/chat.html">Ask about prayer</a>
+        <a class="btn btn--ghost" href="/bible.html">Read a psalm</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="/">
+          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v2h18V7l-9-5Z"/><path d="M5 9v11M19 9v11M9.5 20v-6a2.5 2.5 0 0 1 5 0v6"/></svg></span>
+          <span class="brand__text">
+            <span class="brand__name">Great Church AI</span>
+            <span class="brand__tag">Faith · Scripture · Guidance</span>
+          </span>
+        </a>
+        <p class="footer__blurb">A calm, free companion for exploring Scripture, studying the Bible, and finding words to pray.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/chat.html">Ask AI</a></li>
+          <li><a href="/bible.html">Bible</a></li>
+          <li><a href="/study.html">Study</a></li>
+          <li><a href="/prayer.html">Prayer</a></li>
+          <li><a href="/sermons.html">Sermons</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/about.html#scripture">Which Bible?</a></li>
+          <li><a href="/about.html#limitations">Limitations</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Project</h4>
+        <ul>
+          <li><a href="https://github.com/Omonire/GREAT_CHURCH_AI" rel="noopener noreferrer">Source code</a></li>
+          <li><a href="/about.html#privacy">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__disclaimer">
+        Great Church AI is an AI tool for exploring Christian content. It is not God, a
+        pastor, or a prophet. Scripture text is the King James Version, in the public domain.
+      </p>
+      <p>Open source · MIT</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script src="/js/core.js"></script>
+<script src="/js/prayer.js"></script>
+</body>
+</html>
