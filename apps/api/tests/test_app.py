@@ -140,6 +140,21 @@ def test_server_side_ai_is_off_unless_configured() -> None:
     ).server_side_ai_enabled
 
 
+def test_wsgi_module_exposes_a_plain_app_object() -> None:
+    # Hosts pass the start command through a shell, so the documented target
+    # must stay free of parentheses. Render's bash -c rejects an unquoted
+    # create_app() and fails the deploy.
+    from types import FunctionType
+
+    from flask import Flask
+
+    from church_ai_api import wsgi
+
+    assert isinstance(wsgi.app, Flask)
+    assert not isinstance(wsgi.app, FunctionType)
+    assert wsgi.app.test_client().get("/api/health").status_code == 200
+
+
 def test_api_only_mode_when_the_frontend_is_missing() -> None:
     app = create_app(
         Settings(log_level="WARNING", web_dist="../../nowhere-at-all")

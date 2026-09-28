@@ -77,11 +77,16 @@ a different origin than the API.
 
 The app is a stateless WSGI service, so it needs only a Python runtime and a
 static path. The `python -m church_ai_api` entry point is for local
-development; production should use gunicorn against the app factory:
+development; production should use gunicorn against the WSGI module:
 
 ```
-gunicorn church_ai_api.main:create_app() --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
+gunicorn church_ai_api.wsgi:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
 ```
+
+Prefer `church_ai_api.wsgi:app` over the factory form
+`church_ai_api.main:create_app()`. Hosts pass the start command through a shell,
+and Render in particular runs it through `bash -c`, where an unquoted
+`create_app()` is a syntax error that fails the deploy.
 
 Use one worker with threads. The KJV corpus is loaded once per worker, so
 extra workers each pay that cost for no benefit on a small instance.
